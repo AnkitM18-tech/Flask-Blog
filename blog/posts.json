@@ -1,0 +1,14 @@
+[
+  {
+    "author": "Corey Schafer",
+    "title": "Blog Post 1",
+    "content": "First post content",
+    "date_posted": "July 20, 2025"
+  },
+  {
+    "author": "Jane Doe",
+    "title": "Blog Post 2",
+    "content": "Second post content",
+    "date_posted": "July 21, 2025"
+  }
+]
