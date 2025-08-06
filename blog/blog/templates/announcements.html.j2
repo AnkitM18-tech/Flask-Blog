@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block content %}
+    <h1 class="mb-3">Announcements</h1>
+    <p>Check out new Posts!</p>
+    {% for user in users.items %}
+        <article class="media content-section">
+            <div class="media-body" style="display:flex; align-items:center; ">
+                <img class="rounded-circle article-img mr-4"  src=" {{ url_for('static', filename='profile/' + user.image_file) }} " />
+                <div class="article-content">
+                    <h3 class="mb-3">
+                        <a class="article-title" href="{{ url_for('users.user_posts', username= user.username)}}">{{ user.username }}</a> has written {{ posts[user] }} posts.
+                    </h3>
+                </div>
+            </div>
+        </article>
+    {% endfor %}
+    {% for page_num in users.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+    {% if page_num %}
+      {% if users.page == page_num %}
+        <a class="btn btn-info mb-4" href="{{ url_for('main.announcements',page=page_num)}}">{{ page_num }}</a>
+      {% else %}
+          <a class="btn btn-outline-info mb-4" href="{{ url_for('main.announcements', page=page_num)}}">{{ page_num }}</a>
+      {% endif %}
+    {% else %}
+      ...
+    {% endif %}
+  {% endfor %}
+{% endblock content %}
